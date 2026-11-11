@@ -82,7 +82,10 @@ function schedule() {
 wallcast.playback.deferReady();
 wallcast.ready().then(async ({ screen }) => {
   document.documentElement.dir = ['he', 'ar'].includes(screen.locale) ? 'rtl' : 'ltr';
-  document.body.classList.toggle('portrait', screen.orientation === 'portrait');
+  // Lay out by the app's own box: in a zone it can be portrait on a landscape screen.
+  const fit = () => document.body.classList.toggle('portrait', wallcast.frame.orientation === 'portrait');
+  fit();
+  window.addEventListener('resize', fit);
   // Show the last numbers at once (a screen restarting offline), then fresh ones.
   last = await wallcast.storage.get('last').catch(() => null);
   render();

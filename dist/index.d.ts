@@ -61,6 +61,8 @@ export interface Wallcast {
   readonly app: WallcastContext['app'];
   readonly screen: WallcastScreen;
   readonly config: Record<string, unknown>;
+  /** The app's own box (its zone, or the whole screen). Lay out by this; `screen` is the screen it is on. */
+  readonly frame: { width: number; height: number; orientation: 'landscape' | 'portrait' };
   ready(): Promise<WallcastContext>;
   on<K extends keyof WallcastEvents>(type: K, fn: Listener<WallcastEvents[K]>): () => void;
   off<K extends keyof WallcastEvents>(type: K, fn: Listener<WallcastEvents[K]>): void;

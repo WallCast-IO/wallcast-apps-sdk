@@ -77,7 +77,10 @@ function tick() {
 
 wallcast.ready().then(async ({ screen }) => {
   document.documentElement.dir = ['he', 'ar'].includes(screen.locale) ? 'rtl' : 'ltr';
-  document.body.classList.toggle('portrait', screen.orientation === 'portrait');
+  // Lay out by the app's own box: in a zone it can be portrait on a landscape screen.
+  const fit = () => document.body.classList.toggle('portrait', wallcast.frame.orientation === 'portrait');
+  fit();
+  window.addEventListener('resize', fit);
   // This screen's last state, then the queue the staff system saved for every screen.
   state = (await wallcast.storage.get('queue').catch(() => null)) || state;
   const shared = await wallcast.storage.shared.get('queue').catch(() => null);

@@ -349,11 +349,7 @@
       set: function (key, value) { return request('storage.set', { scope: 'device', key: String(key), value: value }); },
       remove: function (key) { return request('storage.remove', { scope: 'device', key: String(key) }); },
       shared: {
-        get: function (key) {
-          return request('storage.get', { scope: 'shared', key: String(key) }).then(function (result) {
-            return result && typeof result === 'object' && 'value' in result ? result.value : result;
-          });
-        },
+        get: function (key) { return request('storage.get', { scope: 'shared', key: String(key) }); },
         set: function (key, value) { return request('storage.set', { scope: 'shared', key: String(key), value: value }); },
         remove: function (key) { return request('storage.remove', { scope: 'shared', key: String(key) }); }
       }
@@ -395,6 +391,16 @@
 
   ['mode', 'app', 'screen', 'config'].forEach(function (name) {
     Object.defineProperty(wallcast, name, { enumerable: true, get: function () { return state[name]; } });
+  });
+  // The app's own box (a zone of the design, or the whole screen): lay out by this,
+  // while wallcast.screen describes the screen it is on.
+  Object.defineProperty(wallcast, 'frame', {
+    enumerable: true,
+    get: function () {
+      var width = global.innerWidth;
+      var height = global.innerHeight;
+      return { width: width, height: height, orientation: height > width ? 'portrait' : 'landscape' };
+    }
   });
   Object.defineProperty(wallcast.playback, 'visible', { enumerable: true, get: function () { return state.visible; } });
 
