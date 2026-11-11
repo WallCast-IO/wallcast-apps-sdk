@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 1,
+  "id": "now-serving",
+  "name": "Now serving",
+  "version": "1.0.0",
+  "kind": "bundle",
+  "entry": "index.html",
+  "description": "A queue board: the ticket being served, at which counter, and the last ones called. Staff systems call the next ticket through the WallCast API.",
+  "icon": "icon.svg",
+  "display": { "orientations": ["landscape", "portrait"], "background": "#0f172a" },
+  "permissions": ["realtime", "storage"],
+  "config": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string", "title": "Title", "default": "Now serving" },
+      "counterLabel": { "type": "string", "title": "Counter word", "default": "Counter" },
+      "accent": { "type": "string", "title": "Accent color", "format": "color", "default": "#facc15" },
+      "history": { "type": "integer", "title": "Recent tickets shown", "minimum": 0, "maximum": 8, "default": 5 },
+      "chime": { "type": "boolean", "title": "Chime on a new ticket", "default": true },
+      "counters": { "type": "array", "title": "Only these counters (empty = all)", "x-scope": "screen", "items": { "type": "integer", "minimum": 1, "maximum": 99 }, "default": [] }
+    }
+  },
+  "memory": "light"
+}

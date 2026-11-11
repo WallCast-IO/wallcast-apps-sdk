@@ -1,0 +1,37 @@
+{
+  "name": "@wallcast/apps-sdk",
+  "version": "1.0.0",
+  "description": "Build apps for WallCast screens: the window.wallcast SDK, a dev host and the wallcast-app CLI",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./wallcast.js": "./dist/wallcast.js"
+  },
+  "bin": {
+    "wallcast-app": "./bin/wallcast-app.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "lib",
+    "dev-host",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:api": "node scripts/build.mjs --api ../wall-cast-api-devplatform/src/modules/developer-apps/sdk-bundle.ts",
+    "test": "node scripts/build.mjs && node --test test/*.test.mjs",
+    "dev:kpi": "node bin/wallcast-app.mjs dev examples/kpi-dashboard",
+    "dev:queue": "node bin/wallcast-app.mjs dev examples/now-serving"
+  }
+}

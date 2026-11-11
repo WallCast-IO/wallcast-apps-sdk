@@ -1,0 +1,5 @@
+{
+  "config": { "branch": "Tel Aviv · Dizengoff" },
+  "secrets": { "apiKey": "dev-key-not-needed-by-dummyjson" },
+  "screen": { "width": 1920, "height": 1080 }
+}

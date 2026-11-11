@@ -1,0 +1,37 @@
+{
+  "manifestVersion": 1,
+  "id": "kpi-dashboard",
+  "name": "Sales KPIs",
+  "version": "1.0.0",
+  "kind": "bundle",
+  "entry": "index.html",
+  "description": "Today's sales from your store API: revenue, orders, average order, items, the goal and the best sellers.",
+  "icon": "icon.svg",
+  "display": { "orientations": ["landscape", "portrait"], "background": "#0a0f1c" },
+  "permissions": ["data"],
+  "dataSources": {
+    "sales": {
+      "url": "https://dummyjson.com/carts?limit={{config.carts}}",
+      "headers": { "Authorization": "Bearer {{secrets.apiKey}}" },
+      "cacheSeconds": 30,
+      "timeoutMs": 8000
+    }
+  },
+  "config": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string", "title": "Title", "default": "Today's sales" },
+      "currency": { "type": "string", "title": "Currency", "enum": ["USD", "EUR", "ILS", "GBP"], "default": "USD" },
+      "goal": { "type": "number", "title": "Daily goal", "minimum": 0, "default": 250000 },
+      "accent": { "type": "string", "title": "Accent color", "format": "color", "default": "#22d3ee" },
+      "refreshSeconds": { "type": "integer", "title": "Refresh every (seconds)", "minimum": 15, "maximum": 3600, "default": 60 },
+      "carts": { "type": "integer", "title": "Orders to read", "minimum": 5, "maximum": 30, "default": 20 },
+      "apiKey": { "type": "string", "title": "Store API key", "description": "Sent to your API by WallCast; never reaches the screen.", "x-secret": true },
+      "branch": { "type": "string", "title": "Branch name", "x-scope": "screen", "default": "" }
+    }
+  },
+  "refresh": { "configSeconds": 60 },
+  "timeouts": { "readySeconds": 15 },
+  "offline": { "maxStaleSeconds": 86400 },
+  "memory": "light"
+}

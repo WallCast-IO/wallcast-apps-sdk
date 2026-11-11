@@ -1,0 +1,20 @@
+{
+  "manifestVersion": 1,
+  "id": "my-app",
+  "name": "My screen app",
+  "version": "1.0.0",
+  "kind": "bundle",
+  "entry": "index.html",
+  "description": "A starting point: a title, a message and the time.",
+  "display": { "orientations": ["landscape", "portrait"], "background": "#0b1020" },
+  "permissions": [],
+  "config": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string", "title": "Title", "default": "Welcome" },
+      "message": { "type": "string", "title": "Message", "x-widget": "textarea", "default": "Edit me in the app's settings." },
+      "accent": { "type": "string", "title": "Accent color", "format": "color", "default": "#38bdf8" },
+      "showClock": { "type": "boolean", "title": "Show the time", "default": true }
+    }
+  }
+}

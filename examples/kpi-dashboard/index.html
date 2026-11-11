@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales KPIs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="board" id="board">
+    <header>
+      <div>
+        <h1 id="title">Today's sales</h1>
+        <div class="sub" id="branch"></div>
+      </div>
+      <div class="status"><span class="dot" id="dot"></span><span id="updated">Loading…</span></div>
+    </header>
+    <section class="tiles">
+      <article><h2>Revenue</h2><strong id="revenue">—</strong><em id="revenue-note"></em></article>
+      <article><h2>Orders</h2><strong id="orders">—</strong><em id="orders-note"></em></article>
+      <article><h2>Average order</h2><strong id="average">—</strong><em id="average-note"></em></article>
+      <article><h2>Items sold</h2><strong id="items">—</strong><em id="items-note"></em></article>
+    </section>
+    <section class="bottom">
+      <article class="goal">
+        <h2>Daily goal</h2>
+        <svg viewBox="0 0 120 120" class="ring" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" class="track"/>
+          <circle cx="60" cy="60" r="50" class="fill" id="ring"/>
+        </svg>
+        <div class="ring-label"><strong id="goal-pct">0%</strong><span id="goal-of"></span></div>
+      </article>
+      <article class="best">
+        <h2>Best sellers</h2>
+        <ol id="best"></ol>
+      </article>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

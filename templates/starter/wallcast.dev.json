@@ -1,0 +1,5 @@
+{
+  "config": { "title": "Hello from dev mode" },
+  "secrets": {},
+  "screen": { "width": 1920, "height": 1080 }
+}
