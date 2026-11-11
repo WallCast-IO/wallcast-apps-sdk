@@ -1,5 +1,5 @@
 /*!
- * WallCast Apps SDK v1.0.0 — window.wallcast
+ * WallCast Apps SDK v1.0.1 — window.wallcast
  * Talks to the screen (or Studio preview) hosting your app. In a normal browser tab it
  * runs in dev mode, so you can build the app without a screen.
  * Docs: https://wallcast.io/developers
@@ -8,7 +8,7 @@
   'use strict';
   if (global.wallcast && global.wallcast.__sdk) return;
 
-  var VERSION = '1.0.0';
+  var VERSION = '1.0.1';
   var BRIDGE = 1;
   var HANDSHAKE_MS = 1500;
 

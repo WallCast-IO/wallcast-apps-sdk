@@ -1,6 +1,6 @@
 {
   "name": "@wallcast/apps-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build apps for WallCast screens: the window.wallcast SDK, a dev host and the wallcast-app CLI",
   "license": "MIT",
   "type": "module",
