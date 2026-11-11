@@ -11,7 +11,7 @@ h1 { margin: 0; font-size: 6vmin; line-height: 1; letter-spacing: -0.02em; }
 .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2vmin; }
 article { background: var(--card); border: 1px solid var(--line); border-radius: 2vmin; padding: 2.6vmin 2.8vmin; min-width: 0; }
 h2 { margin: 0 0 1.4vmin; font-size: 2.1vmin; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-article strong { display: block; font-size: 6.4vmin; line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+article strong { display: block; font-size: min(6.4vmin, 3.4vw); line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 article em { display: block; margin-top: 1vmin; font-style: normal; font-size: 2vmin; color: var(--muted); min-height: 1em; }
 .tiles article:first-child strong { color: var(--accent); }
 .bottom { display: grid; grid-template-columns: 1fr 2fr; gap: 2vmin; min-height: 0; }

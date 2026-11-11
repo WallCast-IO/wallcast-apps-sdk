@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "kpi-dashboard",
   "name": "Sales KPIs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "bundle",
   "entry": "index.html",
   "description": "Today's sales from your store API: revenue, orders, average order, items, the goal and the best sellers.",

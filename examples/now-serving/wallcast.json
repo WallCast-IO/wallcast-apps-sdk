@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "now-serving",
   "name": "Now serving",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "bundle",
   "entry": "index.html",
   "description": "A queue board: the ticket being served, at which counter, and the last ones called. Staff systems call the next ticket through the WallCast API.",

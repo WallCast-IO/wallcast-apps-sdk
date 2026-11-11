@@ -41,6 +41,7 @@ function render(animate) {
   $('recent-title').textContent = (LABELS[lang] || LABELS.en).recent;
   const current = state.current;
   $('ticket').textContent = current ? current.ticket : '—';
+  $('ticket').classList.toggle('empty', !current);
   $('counter').textContent = current?.counter ? `${config.counterLabel || 'Counter'} ${current.counter}` : '';
   const limit = Number(config.history ?? 5);
   $('recent-wrap').hidden = limit === 0;

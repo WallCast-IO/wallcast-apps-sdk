@@ -5,6 +5,7 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
 .now { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2vmin; padding: 4vmin; text-align: center; }
 h1 { margin: 0; font-size: 5.5vmin; font-weight: 600; letter-spacing: .02em; color: var(--muted); text-transform: uppercase; }
 .ticket { font-size: 30vmin; font-weight: 800; line-height: .95; letter-spacing: -0.03em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ticket.empty { font-size: 14vmin; color: var(--muted); }
 .ticket.flash { animation: flash 1.6s ease; }
 .counter { font-size: 7vmin; font-weight: 700; }
 .recent { background: var(--panel); padding: 5vmin 4vmin; display: flex; flex-direction: column; gap: 2vmin; }
