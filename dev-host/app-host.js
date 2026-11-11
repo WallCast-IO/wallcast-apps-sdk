@@ -118,6 +118,17 @@ export const createAppHost = (options) => {
                 return answer(id, () => (adapter.storageSet && key ? adapter.storageSet(scope, key, payload.value) : unsupported()));
             case 'storage.remove':
                 return answer(id, () => (adapter.storageRemove && key ? adapter.storageRemove(scope, key) : unsupported()));
+            case 'speech.say': {
+                const text = typeof payload.text === 'string' ? payload.text.slice(0, 500) : '';
+                const options = (payload.options && typeof payload.options === 'object' ? payload.options : {});
+                return answer(id, () => adapter.speak && text
+                    ? adapter.speak(text, {
+                        lang: typeof options.lang === 'string' ? options.lang.slice(0, 16) : undefined,
+                        volume: typeof options.volume === 'number' ? Math.min(1, Math.max(0, options.volume)) : undefined,
+                        rate: typeof options.rate === 'number' ? Math.min(2, Math.max(0.5, options.rate)) : undefined,
+                    })
+                    : unsupported());
+            }
             case 'assets.url':
                 return answer(id, () => adapter.assetsUrl ? adapter.assetsUrl(String(payload.url || '')) : Promise.resolve(String(payload.url || '')));
             default:

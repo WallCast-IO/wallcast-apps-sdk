@@ -197,6 +197,8 @@
         return Promise.resolve();
       case 'assets.url':
         return Promise.resolve(payload.url);
+      case 'speech.say':
+        return speakInBrowser(payload.text, payload.options || {});
       case 'net.fetch':
         return fetch(payload.url, payload.init || {}).then(responseToPlain);
       case 'data.fetch': {
@@ -220,6 +222,23 @@
       default:
         return Promise.reject(new Error(type + ' is not available in dev mode'));
     }
+  }
+
+  function speakInBrowser(text, options) {
+    return new Promise(function (resolve, reject) {
+      if (!global.speechSynthesis || !global.SpeechSynthesisUtterance) {
+        var error = new Error('Speech is not available here');
+        error.code = 'unsupported';
+        return reject(error);
+      }
+      var utterance = new SpeechSynthesisUtterance(String(text));
+      if (options.lang) utterance.lang = options.lang;
+      if (typeof options.volume === 'number') utterance.volume = options.volume;
+      if (typeof options.rate === 'number') utterance.rate = options.rate;
+      utterance.onend = function () { resolve(); };
+      utterance.onerror = function () { resolve(); };
+      global.speechSynthesis.speak(utterance);
+    });
   }
 
   function directDataFetch(payload) {
@@ -341,6 +360,10 @@
     },
     assets: {
       url: function (url) { return request('assets.url', { url: String(url) }); }
+    },
+    speech: {
+      /** Read text aloud on the screen: say('Number A15, counter 3', { lang: 'en', volume: 1, rate: 1 }). */
+      say: function (text, options) { return request('speech.say', { text: String(text), options: options || {} }); }
     },
     playback: {
       /** Tell the screen the first frame is drawn, so it shows the app. */

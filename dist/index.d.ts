@@ -69,6 +69,7 @@ export interface Wallcast {
   fetch(url: string, init?: { method?: 'GET' | 'POST'; headers?: Record<string, string>; body?: unknown }): Promise<WallcastFetchResponse>;
   storage: WallcastStorage & { shared: WallcastStorage };
   assets: { url(remoteUrl: string): Promise<string> };
+  speech: { say(text: string, options?: { lang?: string; volume?: number; rate?: number }): Promise<void> };
   playback: { ready(): void; deferReady(): void; done(): void; readonly visible: boolean };
   log: { info(...args: unknown[]): void; warn(...args: unknown[]): void; error(...args: unknown[]): void };
   dev: { emit(type: keyof WallcastEvents | string, data?: unknown): void; setVisible(visible: boolean): void };
