@@ -41,7 +41,7 @@ const dim = color(2);
 const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 
 // Never part of the bundle; add your own lines (a file, or a folder ending in /) to .wallcastignore.
-const DEFAULT_IGNORE = ['node_modules/', '.git/', 'wallcast.dev.json', '.wallcastignore', 'package.json', 'package-lock.json', 'README.md', 'LICENSE', '.env', '.DS_Store'];
+const DEFAULT_IGNORE = ['node_modules/', '.git/', '.github/', '.gitignore', '.vscode/', 'wallcast.dev.json', '.wallcastignore', 'package.json', 'package-lock.json', 'README.md', 'LICENSE', '.env', '.DS_Store'];
 
 const ignoreList = (dir) => {
   const file = join(dir, '.wallcastignore');
