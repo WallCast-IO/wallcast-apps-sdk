@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "build:api": "node scripts/build.mjs --api ../wall-cast-api-devplatform/src/modules/developer-apps/sdk-bundle.ts",
+    "build:api": "node scripts/build.mjs --api ../wall-cast-api/src/modules/developer-apps/sdk-bundle.ts",
     "test": "node scripts/build.mjs && node --test test/*.test.mjs",
     "dev:kpi": "node bin/wallcast-app.mjs dev examples/kpi-dashboard",
     "dev:queue": "node bin/wallcast-app.mjs dev examples/now-serving"

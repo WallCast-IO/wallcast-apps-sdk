@@ -21,7 +21,7 @@ writeFileSync(
 copyFileSync(join(root, 'src/index.d.ts'), join(root, 'dist/index.d.ts'));
 
 // Shared code from the layout spec (vendored, like the other WallCast repos do).
-const spec = resolve(root, process.env.WALLCAST_SPEC_DIR || '../wallcast-layout-spec-devplatform');
+const spec = resolve(root, process.env.WALLCAST_SPEC_DIR || '../wallcast-layout-spec');
 if (existsSync(join(spec, 'app-platform.ts'))) {
   const out = join(root, '.spec-build');
   execFileSync('npx', ['tsc', '--module', 'ES2020', '--target', 'ES2020', '--declaration', 'false', '--strict', '--skipLibCheck',
