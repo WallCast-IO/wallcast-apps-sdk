@@ -1,0 +1,36 @@
+# Uploads the app to WallCast and makes the new version live on every push to main.
+# Add a repository secret WALLCAST_API_KEY (Developers → API keys, permission "apps:write").
+# Raise "version" in wallcast.json for each release: WallCast refuses a version it already has.
+name: Deploy to WallCast
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check for the API key
+        id: key
+        env:
+          WALLCAST_API_KEY: ${{ secrets.WALLCAST_API_KEY }}
+        run: |
+          if [ -z "$WALLCAST_API_KEY" ]; then
+            echo "No WALLCAST_API_KEY secret yet: skipping the deploy."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - run: npm install --no-audit --no-fund
+        if: steps.key.outputs.ready == 'true'
+      - run: npx wallcast-app validate
+        if: steps.key.outputs.ready == 'true'
+      - run: npx wallcast-app deploy --publish
+        if: steps.key.outputs.ready == 'true'
+        env:
+          WALLCAST_API_KEY: ${{ secrets.WALLCAST_API_KEY }}

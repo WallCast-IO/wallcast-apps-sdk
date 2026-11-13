@@ -1,0 +1,14 @@
+{
+  "name": "my-wallcast-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wallcast-app dev",
+    "validate": "wallcast-app validate",
+    "pack": "wallcast-app pack",
+    "deploy": "wallcast-app deploy --publish"
+  },
+  "devDependencies": {
+    "@wallcast/apps-sdk": "github:WallCast-IO/wallcast-apps-sdk"
+  }
+}

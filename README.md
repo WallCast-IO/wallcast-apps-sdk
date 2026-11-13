@@ -9,8 +9,9 @@ Guides: https://wallcast.io/help/topics/developers
 ## Quick start
 
 ```bash
-npx wallcast-app init my-app
+npx github:WallCast-IO/wallcast-apps-sdk init my-app
 cd my-app
+npm install                 # installs wallcast-app in the project
 npx wallcast-app dev        # screen simulator with a settings form, http://localhost:5300
 npx wallcast-app pack       # the zip to upload in Developers → Apps
 WALLCAST_API_KEY=wc_live_… npx wallcast-app deploy --publish   # or upload from CI
@@ -27,7 +28,9 @@ await wallcast.storage.set('last', body);            // kept on this screen
 wallcast.playback.ready();                           // first frame drawn
 ```
 
-Types: `import wallcast from '@wallcast/apps-sdk'` (ESM) or the script tag
+Or start from the template repository [WallCast-IO/wallcast-app-starter](https://github.com/WallCast-IO/wallcast-app-starter) ("Use this template").
+
+Types: `import wallcast from '@wallcast/apps-sdk'` (ESM, after `npm install github:WallCast-IO/wallcast-apps-sdk`) or the script tag
 `https://api.wallcast.io/api/apps-sdk/1/wallcast.js` for pages you host yourself.
 
 ## Example repository

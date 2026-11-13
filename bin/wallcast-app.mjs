@@ -156,8 +156,16 @@ const init = () => {
   const manifest = readJson(manifestPath);
   manifest.id = id;
   writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  const pkgPath = join(target, 'package.json');
+  if (existsSync(pkgPath)) {
+    const pkg = readJson(pkgPath);
+    pkg.name = id;
+    writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
+  }
   console.log(green(`✓ Created ${target}`));
-  console.log(`  cd ${relative(process.cwd(), target) || '.'} && npx wallcast-app dev`);
+  console.log(`  cd ${relative(process.cwd(), target) || '.'}`);
+  console.log('  npm install          # installs wallcast-app in the project');
+  console.log('  npx wallcast-app dev # screen simulator');
 };
 
 const validate = () => {
