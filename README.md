@@ -56,3 +56,7 @@ my-app/
 - `src/wallcast.js` is the SDK (no dependencies); `npm run build` writes `dist/`. `npm run build:api` writes the copy the WallCast API adds to every uploaded bundle (expects the `wall-cast-api` repo next to this one).
 - `lib/app-platform.js` and `dev-host/app-host.js` are built from `wallcast-layout-spec` (manifest checks and the iframe host shared with Studio and the players). The build looks for it next to this repo, or in `WALLCAST_SPEC_DIR`; without it the vendored copies are kept.
 - Until `@wallcast/apps-sdk` is on npm, install the tool from this repository: `npm install --save-dev github:WallCast-IO/wallcast-apps-sdk`, then `npx wallcast-app …`.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Apps you build with the SDK are yours.
